@@ -102,7 +102,7 @@ define([
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
 				canvas.getContext('2d').drawImage(video, 0, 0);
-				img.src = canvas.toDataURL('image/webp');
+				img.src = canvas.toDataURL('image/png');
 				
 				this.cameraImage = img.src.split(',')[1];
 				
