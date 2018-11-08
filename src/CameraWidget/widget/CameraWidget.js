@@ -4,9 +4,9 @@
     ========================
 
     @file      : CameraWidget.js
-    @version   : 1.0.0
+    @version   : 1.0.1
     @author    : Dennis Reep
-    @date      : 11/6/2018
+    @date      : 11/8/2018
     @copyright : Incentro 2018
     @license   : Apache 2
 
