@@ -79,6 +79,7 @@ define([
 			
 			var captureButton = document.getElementsByClassName("capture-button")[0];
 			var screenshotButton = document.getElementsByClassName("stop-button")[0];
+			screenshotButton.disabled = true;
 			var video = document.getElementsByClassName("videostream")[0];
 			var canvas = document.getElementsByClassName("canvas")[0];
 			canvas.style.display = 'none';
@@ -90,15 +91,19 @@ define([
 			function handleError(error) {
 				console.error('Error: ', error);
 			}
-
-			captureButton.onclick = function() {
+			this.connect(captureButton, "click", function (e) {	
+				screenshotButton.disabled = false;
+				captureButton.disabled = true;
 				video.style.display = 'block';
 				img.style.display = 'none';
 				const constraints = {video: true};
 				navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
-			}
+			});
 	
 			this.connect(screenshotButton, "click", function (e) {	
+				screenshotButton.disabled = true;
+				captureButton.disabled = false;
+				
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
 				canvas.getContext('2d').drawImage(video, 0, 0);
