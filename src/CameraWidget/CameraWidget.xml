@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget id="CameraWidget.widget.CameraWidget" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
     <name>CameraWidget</name>
-    <description>The description of this widget.</description>
+    <description>Access camera from web app - can be set to prefer rear camera.</description>
     <icon />
     <properties>
         <property key="mfToExecute" type="microflow">
@@ -10,6 +10,11 @@
             <description>The microflow to execute on click.</description>
             <returnType type="Boolean" />
         </property>
+		<property key="preferRearCamera" type="boolean" defaultValue="true">
+            <caption>Prefer Rear Camera</caption>
+            <category>Behavior</category>
+            <description>Prefer Rear Camera when true</description>
+        </property>				
     </properties>
 </widget>
 

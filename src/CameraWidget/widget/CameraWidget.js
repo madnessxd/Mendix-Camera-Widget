@@ -4,15 +4,15 @@
     ========================
 
     @file      : CameraWidget.js
-    @version   : 1.0.1
-    @author    : Dennis Reep
-    @date      : 11/8/2018
+    @version   : 1.0.3
+    @author    : Dennis Reep & Eric Pendergrass
+    @date      : 5/21/2019
     @copyright : Incentro 2018
     @license   : Apache 2
 
     Documentation
     ========================
-    Describe your widget here.
+    Camera support from the browser, but with the addition of widget option to prefer rear camera
 */
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
@@ -56,7 +56,8 @@ define([
 
         // Parameters configured in the Modeler.
         mfToExecute: "",
-
+		preferRearCamera: "",
+		
         // Internal variables. Non-primitives created in the prototype are shared between all widget instances.
         _handles: null,
         _contextObj: null,
@@ -96,7 +97,12 @@ define([
 				captureButton.disabled = true;
 				video.style.display = 'block';
 				img.style.display = 'none';
-				const constraints = {video: true};
+				var constraints = {video: true };
+				
+				if (this.preferRearCamera == true) {
+				  constraints = {video: { facingMode: "environment" } };
+				}
+				
 				navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 			});
 	
