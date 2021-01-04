@@ -84,7 +84,7 @@ define([
 			var video = document.getElementsByClassName("videostream")[0];
 			var canvas = document.getElementsByClassName("canvas")[0];
 			canvas.style.display = 'none';
-			var img = document.getElementsByClassName("img")[0];
+			var img = document.getElementsByClassName("cameraSnapshot")[0];
 
 			function handleSuccess(stream) {
 				video.srcObject = stream;
@@ -171,20 +171,21 @@ define([
         _execMf: function (mf, guid, cb) {
             console.log(this.id + "._execMf");
             if (mf && guid) {
-                mx.ui.action(mf, {
+                mx.data.action({
                     params: {
                         applyto: "selection",
+						actionname: mf,
                         guids: [guid]
                     },
-                    callback: lang.hitch(this, function (objs) {
+                    callback: function(obj) {
                         if (cb && typeof cb === "function") {
                             cb(objs);
                         }
-                    }),
+                    },
                     error: function (error) {
                         console.debug(error.description);
                     }
-                }, this);
+                });
             }
         },
 		
