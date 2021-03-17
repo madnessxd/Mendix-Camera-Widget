@@ -84,7 +84,7 @@ define([
 			var video = document.getElementsByClassName("videostream")[0];
 			var canvas = document.getElementsByClassName("canvas")[0];
 			canvas.style.display = 'none';
-			var img = document.getElementsByClassName("cameraSnapshot")[0];
+			var img = document.getElementsByClassName("img")[0];
 
 			function handleSuccess(stream) {
 				video.srcObject = stream;
